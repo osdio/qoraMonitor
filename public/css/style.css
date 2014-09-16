@@ -1,7 +1,7 @@
 .status {
   width: 300px;
   height: 300px;
-  margin: 0px  auto 0 auto;
+  margin: 0px auto 0 auto;
 }
 .status > span {
   line-height: 300px;
@@ -60,4 +60,13 @@
 }
 .info .peers li {
   padding: 5px;
+}
+.err {
+  background-color: firebrick;
+  min-height: 400px;
+}
+.err > h2 {
+  color: snow;
+  text-align: center;
+  margin-top: 80px;
 }

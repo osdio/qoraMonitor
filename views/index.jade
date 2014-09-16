@@ -22,10 +22,9 @@ block content
                 ul.list-unstyled.peers
                     for peer in message.peers
                        li=peer
-
-
         else
-            .err=message
+            .cover.err
+                h2=message
 
 
 

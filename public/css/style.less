@@ -1,24 +1,25 @@
-.status{
+.status {
   width: 300px;
   height: 300px;
-  margin: 0px  auto 0 auto;
-  &>span{
+  margin: 0px auto 0 auto;
+  & > span {
     line-height: 300px;
     font-size: 300px;
     color: snow;
   }
-  .current-block{
+  .current-block {
     margin-top: 30px;
     margin-bottom: 30px;
     border: none;
     background-color: cornflowerblue;
     color: #fff;
-    &:hover{
-      background-color: lighten(cornflowerblue,1%);
+    &:hover {
+      background-color: lighten(cornflowerblue, 1%);
     }
   }
 }
-.cover{
+
+.cover {
   padding-top: 50px;
   padding-bottom: 120px;
   width: 100%;
@@ -26,46 +27,58 @@
   //background-color: rgba(92, 92, 214, 0.8);
   //background-color: firebrick;
 }
-.status1{
+
+.status1 {
   background-color: orange;
 }
-.status0{
+
+.status0 {
   background-color: firebrick;
 }
-.status2{
- background-color: rgba(92, 92, 214, 0.8);
+
+.status2 {
+  background-color: rgba(92, 92, 214, 0.8);
 }
 
-.container-fluid
-{
+.container-fluid {
   padding: 0;
 }
 
-.info{
+.info {
   margin-top: 20px;
-  ul{
-    color: rgba(0,0,0,0.5);
+  ul {
+    color: rgba(0, 0, 0, 0.5);
     text-align: center;
     font-size: 24px;
   }
-  .block-info{
-      li{
-        padding: 20px;
-        &>span{
-          padding-left: 10px;
-          color:rgba(92, 92, 214, 0.8) ;
-        }
+  .block-info {
+    li {
+      padding: 20px;
+      & > span {
+        padding-left: 10px;
+        color: rgba(92, 92, 214, 0.8);
       }
+    }
   }
-  h2{
+  h2 {
     text-align: center;
-    color:rgba(92, 92, 214, 0.8) ;
+    color: rgba(92, 92, 214, 0.8);
   }
-  .peers{
+  .peers {
     text-align: center;
-    li{
+    li {
       padding: 5px;
     }
 
+  }
+}
+
+.err {
+  background-color: firebrick;
+  min-height: 400px;
+  & > h2 {
+    color: snow;
+    text-align: center;
+    margin-top: 80px;
   }
 }
