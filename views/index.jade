@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    .container-fluid
+        .status
+            if message.status=='0'
+                span.glyphicon-arrow-down.glyphicon
+            if message.status=='1'
+                    span.glyphicon.glyphicon-refresh
+            if message.status=="2"
+                span.glyphicon.glyphicon-ok
+        ul.list-unstyled.list-inline.block
+            li Block Height : #{message.blockHeight}
+            li Last Block Time: #{message.blockLast.timestamp}
+            li Next Block Time : #{message.blockTime}
+            li Next Block Generating Balance : #{message.generatingBalance}
+
+
+
+
