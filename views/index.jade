@@ -18,7 +18,7 @@ block content
                         span.text-info=message.blockLast.timestamp
                     li Last Block Generating Balance :
                         span.text-info=message.blockLast.generatingBalance
-                h2 Connected Peers
+                h2  Peers Count : #{message.peers.length}
                 ul.list-unstyled.peers
                     for peer in message.peers
                        li=peer

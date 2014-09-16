@@ -2,8 +2,13 @@ express = require 'express'
 http = require 'http'
 async = require 'async'
 require 'date-utils'
+settings = require '../settings'
 router = express.Router()
 
+router.get '/', (req,res,next)->
+  if !req.session.user
+    res.redirect('/login')
+  next()
 
 router.get '/', (req, res)->
   getInfoDirect = (path)->
@@ -22,7 +27,7 @@ router.get '/', (req, res)->
     blockTime: getInfoDirect('/blocks/time')
     generatingBalance: getInfoDirect('/blocks/generatingbalance')
   #trasactionsNet: getInfoDirect('/transactions/network')
-    #blockLast: getInfoDirect('/blocks/last')
+  #blockLast: getInfoDirect('/blocks/last')
 
 
   async.parallel tasks, (err, results)->
@@ -40,4 +45,18 @@ router.get '/', (req, res)->
       title: "Qora Monitor"
       message: results
       err: false
+
+router.get '/login', (req, res)->
+  res.render 'login',
+    titlt: "Log IN"
+
+router.post '/login', (req, res)->
+  console.log req.body
+  if settings.loginPwd == req.body.pwd and settings.loginUserName == req.body.user
+    req.session.user = req.body.user
+    res.redirect '/'
+  else
+    res.redirect '/login'
+
+
 module.exports = router

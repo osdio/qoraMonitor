@@ -1,0 +1,33 @@
+body {
+  background-color: rgba(92, 92, 214, 0.8);
+}
+.formwrapper {
+  max-width: 360px;
+  margin-top: 170px;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: snow;
+  padding: 30px;
+}
+.formwrapper form h2 {
+  margin-bottom: 20px;
+}
+.formwrapper form input {
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.4);
+  padding-left: 10px;
+}
+.formwrapper form button {
+  border: none;
+  height: 40px;
+  border-radius: 0;
+}
+input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+input:-moz-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
