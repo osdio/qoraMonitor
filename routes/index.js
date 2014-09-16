@@ -35,8 +35,7 @@
       isUpToDate: getInfoDirect('/qora/isuptodate'),
       peers: getInfoDirect('/peers'),
       blockTime: getInfoDirect('/blocks/time'),
-      generatingBalance: getInfoDirect('/blocks/generatingbalance'),
-      blockLast: getInfoDirect('/blocks/last')
+      generatingBalance: getInfoDirect('/blocks/generatingbalance')
     };
     return async.parallel(tasks, function(err, results) {
       if (err) {
@@ -47,9 +46,7 @@
         });
         return;
       }
-      results.blockLast = eval('(' + results.blockLast + ')');
       results.peers = eval('(' + results.peers + ')');
-      results.blockLast.timestamp = new Date(results.blockLast.timestamp).toFormat('YYYY-MM-DD HH24:MI:SS');
       return res.render('index', {
         title: "Qora Monitor",
         message: results,
