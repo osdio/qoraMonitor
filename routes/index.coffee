@@ -10,7 +10,8 @@ router.get '/', (req, res)->
     return (callback)->
       get = http.get 'http://127.0.0.1:9085' + path, (res)->
         res.on 'data', (data)->
-          callback null, data.toString()
+          res.on 'end', ()->
+            callback null, data.toString()
       get.on 'error', (err)->
         callback err
   tasks =

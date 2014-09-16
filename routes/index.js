@@ -19,7 +19,9 @@
         var get;
         get = http.get('http://127.0.0.1:9085' + path, function(res) {
           return res.on('data', function(data) {
-            return callback(null, data.toString());
+            return res.on('end', function() {
+              return callback(null, data.toString());
+            });
           });
         });
         return get.on('error', function(err) {
