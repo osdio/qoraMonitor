@@ -1,0 +1,63 @@
+.status {
+  width: 300px;
+  height: 300px;
+  margin: 0px  auto 0 auto;
+}
+.status > span {
+  line-height: 300px;
+  font-size: 300px;
+  color: snow;
+}
+.status .current-block {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: none;
+  background-color: cornflowerblue;
+  color: #fff;
+}
+.status .current-block:hover {
+  background-color: #6998ee;
+}
+.cover {
+  padding-top: 50px;
+  padding-bottom: 120px;
+  width: 100%;
+  height: auto;
+}
+.status1 {
+  background-color: orange;
+}
+.status0 {
+  background-color: firebrick;
+}
+.status2 {
+  background-color: rgba(92, 92, 214, 0.8);
+}
+.container-fluid {
+  padding: 0;
+}
+.info {
+  margin-top: 20px;
+}
+.info ul {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 24px;
+}
+.info .block-info li {
+  padding: 20px;
+}
+.info .block-info li > span {
+  padding-left: 10px;
+  color: rgba(92, 92, 214, 0.8);
+}
+.info h2 {
+  text-align: center;
+  color: rgba(92, 92, 214, 0.8);
+}
+.info .peers {
+  text-align: center;
+}
+.info .peers li {
+  padding: 5px;
+}
