@@ -121,3 +121,7 @@ If you want to change the login user and the password, you should edit the setti
 }).call(this);
 ```
 
+This is the monitor page: 
+
+<img width="" height="" class="amd-center" src="http://lingyong-me.qiniudn.com/E777DE10-AFD2-4313-92C1-877B435A257A.png 2014-9-16 16:56-px1366" alt="screenshot" />
+

@@ -12,11 +12,13 @@ router.get '/', (req,res,next)->
 
 router.get '/', (req, res)->
   getInfoDirect = (path)->
+    buffers=[]
     return (callback)->
       get = http.get 'http://127.0.0.1:9085' + path, (res)->
         res.on 'data', (data)->
-          res.on 'end', ()->
-            callback null, data.toString()
+          buffers.push data
+        res.on 'end', ()->
+          callback null, buffers.toString()
       get.on 'error', (err)->
         callback err
   tasks =
@@ -26,8 +28,8 @@ router.get '/', (req, res)->
     peers: getInfoDirect('/peers')
     blockTime: getInfoDirect('/blocks/time')
     generatingBalance: getInfoDirect('/blocks/generatingbalance')
-  #trasactionsNet: getInfoDirect('/transactions/network')
-  #blockLast: getInfoDirect('/blocks/last')
+    trasactionsNet: getInfoDirect('/transactions/network')
+    blockLast: getInfoDirect('/blocks/last')
 
 
   async.parallel tasks, (err, results)->
@@ -37,10 +39,10 @@ router.get '/', (req, res)->
         message: "Get info failed , Plea make sure you have start the qora without -disablerpc "
         err: true
       return
-    #results.blockLast = eval('(' + results.blockLast + ')')
+    results.blockLast = eval('(' + results.blockLast + ')')
     results.peers = eval('(' + results.peers + ')')
-    #results.blockTime = new Date(Number(results.blockLast.timestamp) + Number(results.blockTime) * 1000).toFormat('YYYY-MM-DD HH24:MI:SS')
-    #results.blockLast.timestamp = new Date(results.blockLast.timestamp).toFormat('YYYY-MM-DD HH24:MI:SS')
+    results.blockTime = new Date(Number(results.blockLast.timestamp) + Number(results.blockTime) * 1000).toFormat('YYYY-MM-DD HH24:MI:SS')
+    results.blockLast.timestamp = new Date(results.blockLast.timestamp).toFormat('YYYY-MM-DD HH24:MI:SS')
     res.render 'index',
       title: "Qora Monitor"
       message: results
