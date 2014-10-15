@@ -60,8 +60,8 @@
         });
         return;
       }
-      results.blockLast = eval('(' + results.blockLast + ')');
-      results.peers = eval('(' + results.peers + ')');
+      results.blockLast = JSON.parse(results.blockLast);
+      results.peers = JSON.parse(results.peers);
       results.blockTime = new Date(Number(results.blockLast.timestamp) + Number(results.blockTime) * 1000).toFormat('YYYY-MM-DD HH24:MI:SS');
       results.blockLast.timestamp = new Date(results.blockLast.timestamp).toFormat('YYYY-MM-DD HH24:MI:SS');
       return res.render('index', {

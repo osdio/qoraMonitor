@@ -5,14 +5,14 @@ require 'date-utils'
 settings = require '../settings'
 router = express.Router()
 
-router.get '/', (req,res,next)->
+router.get '/', (req, res, next)->
   if !req.session.user
     res.redirect('/login')
   next()
 
 router.get '/', (req, res)->
   getInfoDirect = (path)->
-    buffers=[]
+    buffers = []
     return (callback)->
       get = http.get 'http://127.0.0.1:9085' + path, (res)->
         res.on 'data', (data)->
@@ -39,8 +39,8 @@ router.get '/', (req, res)->
         message: "Get info failed , Plea make sure you have start the qora without -disablerpc "
         err: true
       return
-    results.blockLast = eval('(' + results.blockLast + ')')
-    results.peers = eval('(' + results.peers + ')')
+    results.blockLast = JSON.parse results.blockLast
+    results.peers = JSON.parse results.peers
     results.blockTime = new Date(Number(results.blockLast.timestamp) + Number(results.blockTime) * 1000).toFormat('YYYY-MM-DD HH24:MI:SS')
     results.blockLast.timestamp = new Date(results.blockLast.timestamp).toFormat('YYYY-MM-DD HH24:MI:SS')
     res.render 'index',
