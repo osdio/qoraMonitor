@@ -52,23 +52,32 @@
       blockLast: getInfoDirect('/blocks/last')
     };
     return async.parallel(tasks, function(err, results) {
-      if (err) {
-        res.render('index', {
+      var e, errRender;
+      errRender = function() {
+        return res.render('index', {
           title: 'error',
           message: "Get info failed , Plea make sure you have start the qora without -disablerpc ",
           err: true
         });
+      };
+      if (err) {
+        errRender();
         return;
       }
-      results.blockLast = JSON.parse(results.blockLast);
-      results.peers = JSON.parse(results.peers);
-      results.blockTime = new Date(Number(results.blockLast.timestamp) + Number(results.blockTime) * 1000).toFormat('YYYY-MM-DD HH24:MI:SS');
-      results.blockLast.timestamp = new Date(results.blockLast.timestamp).toFormat('YYYY-MM-DD HH24:MI:SS');
-      return res.render('index', {
-        title: "Qora Monitor",
-        message: results,
-        err: false
-      });
+      try {
+        results.blockLast = JSON.parse(results.blockLast);
+        results.peers = JSON.parse(results.peers);
+        results.blockTime = new Date(Number(results.blockLast.timestamp) + Number(results.blockTime) * 1000).toFormat('YYYY-MM-DD HH24:MI:SS');
+        results.blockLast.timestamp = new Date(results.blockLast.timestamp).toFormat('YYYY-MM-DD HH24:MI:SS');
+        return res.render('index', {
+          title: "Qora Monitor",
+          message: results,
+          err: false
+        });
+      } catch (_error) {
+        e = _error;
+        return errRender();
+      }
     });
   });
 
